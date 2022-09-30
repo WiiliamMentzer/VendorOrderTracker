@@ -13,15 +13,20 @@ namespace VendorOrder.Models
     public Vendor(string name, string description)
     {
       vendorName = name;
-      vendorDescription = description
+      vendorDescription = description;
       _instances.Add(this);
       ID = _instances.Count;
       Order = new List<Order>{};
     }
 
-    public static List<Order> GetAllVendors()
+    public static List<Vendor> GetAllVendors()
     {
       return _instances;
+    }
+
+    public static void ClearAll()
+    {
+      _instances.Clear();
     }
 
     public static Vendor Find(int vendorID)
