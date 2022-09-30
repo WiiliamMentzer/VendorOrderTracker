@@ -46,7 +46,40 @@ namespace VendorOrder.Tests
 
       //Assert
       Assert.AreEqual(vendorDescription, result);
+    }
+    [TestMethod]
+    public void SetNewDescription_SetDescription_String()
+    {
+      //Arrange
+      string vendorDescription = "the bakery";
+      Vendor newVendor = new Vendor("BreadCity", vendorDescription);
+
+      //Act
+      string newDescription = "The place of the bread";
+      newVendor.vendorDescription = newDescription;
+      string result = newVendor.vendorDescription;
+
+      //Assert
+      Assert.AreEqual(newDescription, result);
     }    
 
+    [TestMethod]
+    public void GetAllVendorsOrders_ReturnVendorOrders_VendorOrdersList()
+    {
+      //Arrange
+
+      Order newOrder1 = new Order("Bread", "4/11/12", 200);
+      Order newOrder2 = new Order("Cheese", "4/11/12", 100);
+      List<Order> orderList = new List<Order> { newOrder1, newOrder2 };
+      Vendor newVendor = new Vendor("BreadCity", "The place of the bread");
+      newVendor.AddOrder(orderList);
+
+      //Act
+      List<Vendor> result = newVendor.Orders;
+
+      //Assert
+      CollectionAssert.AreEqual(orderList, result);
+
+    }
   }
 }
