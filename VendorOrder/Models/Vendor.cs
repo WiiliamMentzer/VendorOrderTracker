@@ -5,13 +5,13 @@ namespace VendorOrder.Models
   public class Vendor
   {
     public static List<Vendor> _instances = new List<Vendor> {};
-    public string VendorName { get; set; }
+    public string vendorName { get; set; }
     public int ID { get; }
     public List<Order> Order { get; set; }
 
-    public Vendor(string vendorName)
+    public Vendor(string name)
     {
-      Name = vendorName;
+      vendorName = name;
       _instances.Add(this);
       ID = _instances.Count;
       Order = new List<Order>{};
