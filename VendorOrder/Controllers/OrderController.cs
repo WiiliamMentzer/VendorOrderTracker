@@ -6,15 +6,15 @@ namespace VendorOrder.Controllers
 {
   public class OrderController : Controller
   {
-    [HttpGet("/vendors/{vendorId}/items/new")]
-    public ActionResult New(int orderId)
+    [HttpGet("/vendor/{vendorId}/orders/new")]
+    public ActionResult New(int vendorId)
     {
-      Order order = Order.FindOrder(orderId);
-      return View(order);
+      Vendor vendor = Vendor.Find(vendorId);
+      return View(vendor);
     }
 
-    [HttpGet("/categories/{vendorId}/orders/{orderId}")]
-    public ActionResult Show(int vendorId, int orderId)
+    [HttpGet("/vendor/{vendorId}/orders/{orderId}")]
+    public ActionResult View(int vendorId, int orderId)
     {
       Order order = Order.FindOrder(orderId);
       Vendor vendor = Vendor.Find(vendorId);

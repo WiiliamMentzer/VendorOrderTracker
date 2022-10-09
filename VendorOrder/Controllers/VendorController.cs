@@ -20,10 +20,18 @@ namespace VendorOrder.Controllers
       return View();
     }
 
+    [HttpPost("/vendor")]
+    public ActionResult Create(string vendorName, string vendorDescription)
+    {
+      Vendor newVendor = new Vendor(vendorName, vendorDescription);
+      return RedirectToAction("Index");
+    }
+
     [HttpGet("/vendor/{id}")]
-    public ActionResult Show(int id)
+    public ActionResult View(int id)
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
+     
       Vendor selectedVendor = Vendor.Find(id);
       List<Order> vendorOrders = selectedVendor.Orders;
       model.Add("Vendor", selectedVendor);
@@ -31,7 +39,7 @@ namespace VendorOrder.Controllers
       return View(model);
     }
 
-    [HttpPost("/categories/{categoryId}/Orders")]
+    [HttpPost("/vendor/{vendorId}/orders")]
     public ActionResult Create(int vendorId, string orderDescription, string orderDate, int orderPrice)
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
@@ -41,7 +49,7 @@ namespace VendorOrder.Controllers
       List<Order> vendorOrders = foundVendor.Orders;
       model.Add("Orders", vendorOrders);
       model.Add("Vendor", foundVendor);
-      return View("Show", model);
+      return View("View", model);
     }
   }
 }
