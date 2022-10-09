@@ -1,0 +1,24 @@
+@* <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My To-Do List!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  </head>
+  <body>
+    @using VendorOrder.Models;
+
+    <h3>Here are all the Orders from this Vendor:</h3>
+
+    <ol>
+    @foreach (Vendor Vendor in @Model["Vendors"])
+    {
+      <li><a href='/vendor/@Model["Vendor"].Id/Vendor/@Vendor.Id'>@Vendor.Description</a></li>
+    }
+    </ol>
+
+    <p><a href='/vendor/@Model["category"].Id/vendors/new'>Add a new Vendor</a></p>
+    <p><a href='/vendor'>Return to category list</a></p>
+    <p><a href='/'>Return to Main Page</a></p>
+  </body>
+</html> *@
