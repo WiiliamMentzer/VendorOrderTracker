@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VendorOrder.Models;
 using System.Collections.Generic;
 using System;
+using System.Diagnostics;
 
 namespace VendorOrder.Tests
 {
@@ -65,31 +66,41 @@ namespace VendorOrder.Tests
 
 
 //Crippling Error (cannot put list in list)
-    // [TestMethod]
-    // public void GetAllVendorsOrders_ReturnVendorOrders_VendorOrdersList()
-    // {
-    //   //Arrange
+    [TestMethod]
+    public void GetAllVendorsOrders_ReturnVendorOrders_VendorOrdersList()
+    {
+      //Arrange
+      //Act
 
-    //   Order newOrder1 = new Order("Bread", "4/11/12", 200);
-    //   Order newOrder2 = new Order("Cheese", "4/11/12", 100);
+      Order newOrder1 = new Order("Bread", "4/11/12", 200);
+      Order newOrder2 = new Order("Cheese", "4/11/12", 100);
       
-    //   Vendor newVendor = new Vendor("BreadCity", "The place of the bread");
-    //   newVendor.AddOrder(newOrder1);
-    //   newVendor.AddOrder(newOrder2);
+      Vendor newVendor = new Vendor("BreadCity", "The place of the bread");
+      newVendor.AddOrder(newOrder1);
+      newVendor.AddOrder(newOrder2);
 
-    //   // List<Vendor> vendorList = new List<Vendor>();
-    //   // vendorList.Add( new Vendor {
-    //   //   Orders = new List<Order> { newOrder1, newOrder2 }
-    //   // });
+
+      //Assert
+
+      //Tried to console log the information from the object. Did not work.
+      // Console.WriteLine(newVendor.Orders);
+      // Debug.WriteLine("asd");
       
-    //   //{ newOrder1, newOrder2 };
+      Assert.AreEqual(newVendor.Orders[0], newOrder1);
+      Assert.AreEqual(newVendor.Orders[1], newOrder2);
 
-    //   //Act
-    //   List<Vendor> result = newVendor.Orders;
+    }
 
-    //   //Assert
-    //   CollectionAssert.AreEqual(vendorList.Orders, result);
+    [TestMethod]
+    public void FindVendor_ReturnVendor()
+    {
+      //Arrange
+      //Act
+      Vendor newVendor1 = new Vendor("BreadCity", "The city of the bread");
 
-    // }
+      //Assert
+      Assert.AreEqual(newVendor1.vendorName, Vendor.Find(3).vendorName);
+    }
+
   }
 }
