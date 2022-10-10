@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   </head>
   <body>
-<h1>@Model["Vendor"].vendorName Order @Model["Order"].ID Details: </h1>
+<h1>@Model["Vendor"].vendorName Order @Model["Order"].ID Details: </h1><br>
 
-<h2>@Model["Order"].Description</h2>
-<h2>@Model["Order"].Date</h2>
-<h2>@Model["Order"].Price</h2>
+<h2>Description: @Model["Order"].Description</h2>
+<h2>Date Placed: @Model["Order"].Date</h2>
+<h2>Price: @Model["Order"].Price</h2><br>
 
 <a href='/vendor/@Model["Vendor"].ID/orders/new'>Add another order</a>
-<a href='/vendor'>View all vendor</a>
+<a href='/vendor'>View all vendors</a>
   </body>
 </html>

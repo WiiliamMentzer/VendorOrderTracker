@@ -8,12 +8,12 @@
   <body>
     @using VendorOrder.Models;
 
-    <h3>Here are all the Orders from this Vendor:</h3>
+    <h3>Here are all the Orders from this Vendor:</h3><br>
 
     <ol>
     @foreach (Order order in @Model["Orders"])
     {
-      <li><a href='/vendor/@Model["Vendor"].ID/orders/@order.ID'>@order.Description</a></li>
+      <li><a href='/vendor/@Model["Vendor"].ID/orders/@order.ID'>@order.Description</a></li><br>
     }
     </ol>
 

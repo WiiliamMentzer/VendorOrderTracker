@@ -8,12 +8,14 @@
 <body>
   @using VendorOrder.Models;
 
-  <h1>Current Vendors:</h1>
+  <h1>Current Vendors:</h1><br>
 
   @foreach (Vendor vendor in Model)
   {
     <h4><a href='/vendor/@vendor.ID'>@vendor.vendorName</a></h4>
   }
+  <br>
 
-  <p><a href='/'>Back home</a></p>
+  <h3><a href='/'>Back home</a></h3>
+  <h3><a href='/vendor/new'>Create a new Vendor.</a></h3>
 </body>
